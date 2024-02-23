@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import './Home.css'
-import axios from 'axios';
 import { IPost } from '../../Intefaces/IPost';
 import { Link } from 'react-router-dom';
+import blogFetch from '../../axios/config';
 
 const Home = ()=>{
     const[posts, setPosts] = useState<IPost[]>([])
     
     const getPosts = async()=>{
         try{
-            const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
+            const response = await blogFetch.get("/posts");
             setPosts(response.data)
             
             
@@ -33,7 +33,7 @@ const Home = ()=>{
                 <div key={post.id} className="postcontainer">
                     <h2>{post.title}</h2>
                     <p>{post.body}</p>
-                    <Link to={'/posts/'+post.id}>Ler mais</Link>
+                    <Link to={'/posts/'+post.id} className='btn'>Ler mais</Link>
                 </div>
             )
             }
