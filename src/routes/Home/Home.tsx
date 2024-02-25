@@ -28,7 +28,7 @@ const Home = ()=>{
     return(
         <div className='home'>
             <h1>Últimos posts</h1>
-            {posts.length === 0 ? <p>carregando</p>: 
+            {posts.length === 0 ? <p>Carregando...</p>: 
             posts.map(post => 
                 <div key={post.id} className="postcontainer">
                     <h2>{post.title}</h2>
